@@ -14,7 +14,7 @@ $playlist = new YoutubePlaylist(array('devkey' => $dev_key, 'playlistId' => $pla
 $playlist->setMaxresults(10);
 $videos = $playlist->getVideos();
 
-print '<h3>Videos in playlist</h3>';
+print '<h3>Videos in playlist: ' . $playlist->getTitle() . '</h3>';
 print '<ol>';
 foreach ($videos as $vid) {
   print '<li>' . $vid['id'] . ' (' . $vid['title'] . ')</li>' . "\n";

@@ -60,8 +60,24 @@ class YoutubePlaylist
     } catch (Google_Exception $e) {
       throw $e;
     }
-    # code...
     return $ret;
+  }
+
+  public function getTitle()
+  {
+    $title = "Unknown";
+    try {
+      $list = $this->youtube->playlists->listPlaylists('snippet',array('id' => $this->playlistId));
+      // die(print_r($list));
+      //
+      // assume there is only one playlist
+      $title = $list['items'][0]['snippet']['title'];
+    } catch (Google_ServiceException $e) {
+      throw $e;
+    } catch (Google_Exception $e) {
+      throw $e;
+    }
+    return $title;
   }
 
   /**
